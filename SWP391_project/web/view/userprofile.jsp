@@ -39,6 +39,18 @@
                     </div>
 
                     <form class="form" method="post">
+
+                        <label for="">Avatar</label>
+                        <div class="contain-avt">
+                            <img class="avt-user" src="../image/bg_login.jpg" alt="avt">
+                        </div>
+                        <div class="form-group upload-avt">
+                            <label for="image">Upload image</label> <br />
+                            <input type="file" id="image" class="hiddenInput form-control-active" disabled/>
+                            <label for="image" class="lable_imagebtn">Select file</label>
+                            <span>No file selected</span>
+                        </div><hr />
+                        
                         <label for="fullname">Full Name</label>
                         <input class="form-control form-control-active" type="text" name="fullname"
                                value="Nguyen Minh Thanh" disabled id="fullname" placeholder="Your full name" required />
@@ -105,7 +117,7 @@
         <%@include file="./footer.jsp" %>
 
 
-        <script src="../myjs/userprofile.js"></script>
+        <script src="../myjs/profileuser.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
