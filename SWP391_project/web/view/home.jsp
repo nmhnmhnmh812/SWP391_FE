@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>6HP - Happy Programing</title>
-        <link rel="stylesheet" href="../style/style.css">
+        <link rel="stylesheet" href="../style/home.css">
         <link rel="icon" type="image/x-icon" href="../image/mylogo.png">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
@@ -38,7 +38,7 @@
 
         <div class="container body_details_2" data-aos="fade-up" data-aos-duration="1000">
             <div class="part">
-                <h2>Roadmap to become a programmer</h2>
+                <h4>Roadmap to become a programmer</h4>
                 <div class="line_part"></div>
             </div>
 
@@ -72,7 +72,7 @@
         <!-- techonologies -->
         <div class="container technology">
             <div class="part">
-                <h2>TECHNOLOGIES</h2>
+                <h4>TECHNOLOGIES</h4>
                 <div class="line_part"></div>
             </div>
 
@@ -82,24 +82,28 @@
                         <div class="item_techonology">
                             <h3><a href="#" class="item_name">Java</a></h3>
                             <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
+                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
                         <div class="item_techonology">
                             <h3><a href="#" class="item_name">Javascript</a></h3>
                             <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
+                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
                         <div class="item_techonology">
                             <h3><a href="#" class="item_name">C#</a></h3>
                             <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
+                            <p class="item_technology_description">C# is a general-purpose, multi-paradigm programming language. C# encompasses static typing, strong typing, lexically scoped, imperative, declarative, functional, generic, object-oriented, and component-oriented programming disciplines</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
                         <div class="item_techonology">
                             <h3><a href="#" class="item_name">Python</a></h3>
                             <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
+                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
                         </div>
                     </div>
 
@@ -107,24 +111,28 @@
                         <div class="item_techonology">
                             <h3><a href="#" class="item_name">Java</a></h3>
                             <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
+                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
                         <div class="item_techonology">
                             <h3><a href="#" class="item_name">Javascript</a></h3>
                             <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
+                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
                         <div class="item_techonology">
                             <h3><a href="#" class="item_name">C#</a></h3>
                             <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
+                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
                         <div class="item_techonology">
                             <h3><a href="#" class="item_name">Python</a></h3>
                             <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
+                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
                         </div>
                     </div>
                     <br>
@@ -132,31 +140,35 @@
                         <div class="item_techonology">
                             <h3><a href="#" class="item_name">Java</a></h3>
                             <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
+                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
                         <div class="item_techonology">
                             <h3><a href="#" class="item_name">Javascript</a></h3>
                             <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
+                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
                         <div class="item_techonology">
                             <h3><a href="#" class="item_name">C#</a></h3>
                             <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
+                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
                         <div class="item_techonology">
                             <h3><a href="#" class="item_name">Python</a></h3>
                             <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
+                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <div class="seemore" data-aos="fade-up" data-aos-duration="1000">
+            <div class="seemore" data-aos="fade-left" data-aos-duration="1000">
                 <button id="btn_seemore" onclick="handleDisplayItemTech()">See All &#9207;</button>
             </div>
         </div>
@@ -171,7 +183,7 @@
         <!--footer-->
         <%@include file="./footer.jsp" %>
 
-        
+
         <script src="../myjs/myhome.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -181,7 +193,7 @@
         crossorigin="anonymous"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
-                    AOS.init();
+                AOS.init();
         </script>
     </body>
 </html>

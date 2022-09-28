@@ -5,22 +5,24 @@ const listItemMentorCard = document.getElementsByClassName('card-mentor')
 
 // display list item of technologies as default
 const defaultDisplayItemMentor = () => {
-    if (listItemMentorCard.length > 4) {
+    if (listItemMentorCard.length > 8) {
         seemorepart.classList.remove('disable')
-        for (let i = 4; i < listItemMentorCard.length; i++) {
+        for (let i = 8; i < listItemMentorCard.length; i++) {
             listItemMentorCard[i].classList.add('disable')
         }
     } else {
         seemorepart.classList.add('disable')
     }
+                console.log('hello')
+
 }
 
 defaultDisplayItemMentor()
 
 // handle load more items and see less items
 const handleDisplayItemMentor = () => {
-    if (listItemMentorCard.length > 4) {
-        for (let i = 4; i < listItemMentorCard.length; i++) {
+    if (listItemMentorCard.length > 8) {
+        for (let i = 8; i < listItemMentorCard.length; i++) {
             listItemMentorCard[i].classList.toggle('disable')
         }
         if (listItemMentorCard[listItemMentorCard.length - 1].classList.contains('disable')) {

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
+    <servlet>
+        <servlet-name>update_userprofile</servlet-name>
+        <servlet-class>controler.update_userprofile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>usesrprofile</servlet-name>
+        <servlet-class>controler.usesrprofile</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>update_userprofile</servlet-name>
+        <url-pattern>/update_userprofile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>usesrprofile</servlet-name>
+        <url-pattern>/usesrprofile</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

@@ -38,7 +38,7 @@
                         </div>
                     </div>
 
-                    <form class="form" method="post">
+                    <form class="form" action="../update_userprofile" enctype="multipart/form-data" method="post">
 
                         <label for="">Avatar</label>
                         <div class="contain-avt">
@@ -46,9 +46,9 @@
                         </div>
                         <div class="form-group upload-avt">
                             <label for="image">Upload image</label> <br />
-                            <input type="file" id="image" class="hiddenInput form-control-active" disabled/>
+                            <input type="file" onchange="handleGetImage()" name="image" id="image" class="hiddenInput form-control-active" disabled/>
                             <label for="image" class="lable_imagebtn">Select file</label>
-                            <span>No file selected</span>
+                            <span id="file-name">No file selected</span>
                         </div><hr />
                         
                         <label for="fullname">Full Name</label>
@@ -70,29 +70,29 @@
 
                         <label for="phonenumber">Phone numbers</label>
                         <input class="form-control form-control-active" type="text" name="phonenumber"
-                               value="0123456789" disabled id="phonenumber" pattern=/^\d{10}$/ placeholder="Your phonenumber"
+                               value="0123456789" disabled id="phonenumber"  placeholder="Your phonenumber"
                                required />
                         <hr>
 
                         <label for="gender">Gender</label><br>
 
                         <!-- su dung jstl gan cho value la gia tri cua gender: 'Male' or 'Female' -->
-                        <input class="form-control form-control-active gender-value" type="text" name="gender"
+                        <input class="form-control form-control-active gender-value" type="text"
                                value="Male" disabled id="gender" placeholder="Your gender"
                                required />
 
                         <div class="contain-form-gender">
                             <!-- if current gender is male => checked in 'Male input', else => checked 'Female input'  -->
                             Male<input class="form-input-gender form-control-active ml-2 mr-3" type="radio" name="gender"
-                                       value="account123@gmail.com" checked disabled id="gender" placeholder="Your gender" required />
+                                       value="male" checked disabled id="gender" placeholder="Your gender" required />
 
                             Female<input class="form-input-gender form-control-active  ml-2" type="radio" name="gender"
-                                         value="account123@gmail.com" disabled id="gender" placeholder="Your gender" required />
+                                         value="female" disabled id="gender" placeholder="Your gender" required />
                         </div>
                         <hr>
 
 
-                        <button onclick="handleDisableProfile(event)" class="Profile_btn_update">Submit</button>
+                        <button type="submit"  class="Profile_btn_update">Submit</button>
                     </form>
                 </div>
 
@@ -117,7 +117,7 @@
         <%@include file="./footer.jsp" %>
 
 
-        <script src="../myjs/profileuser.js"></script>
+        <script src="../myjs/userprofile.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

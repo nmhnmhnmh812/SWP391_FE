@@ -27,9 +27,9 @@ const topFunction = () => {
 
 // display list item of technologies as default
 const defaultDisplayItemTech = () => {
-    if (listItemTech.length > 4) {
+    if (listItemTech.length > 8) {
         seemorepart.classList.remove('disable')
-        for (let i = 4; i < listItemTech.length; i++) {
+        for (let i = 8; i < listItemTech.length; i++) {
             listItemTech[i].classList.add('disable')
         }
     } else {
@@ -41,8 +41,8 @@ defaultDisplayItemTech()
 
 // handle load more items and see less items
 const handleDisplayItemTech = () => {
-    if (listItemTech.length > 4) {
-        for (let i = 4; i < listItemTech.length; i++) {
+    if (listItemTech.length > 8) {
+        for (let i = 8; i < listItemTech.length; i++) {
             listItemTech[i].classList.toggle('disable')
         }
         if (listItemTech[listItemTech.length - 1].classList.contains('disable')) {

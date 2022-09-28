@@ -25,7 +25,7 @@
         <!-- Outstanding Mentors with techology -->
 
         <div class="container wrap-outstanding-mentor">
-            <div class="part">
+            <div class="part"  data-aos="fade-up" data-aos-duration="1000">
                 <h4>Java Mentors</h4>
                 <div class="line_part"></div>
             </div>
@@ -218,7 +218,7 @@
                 </div>
             </div>
 
-            <div class="seemore" data-aos="fade-up" data-aos-duration="1000">
+            <div class="seemore" data-aos="fade-left" data-aos-duration="1000">
                 <button id="btn_seemore" onclick="handleDisplayItemMentor()">See All &#9207;</button>
             </div>
         </div>
@@ -238,7 +238,7 @@
         <%@include file="./footer.jsp" %>
 
 
-        <script src="../myjs/viewmentor.js"></script>
+        <script src="../myjs/mentor.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

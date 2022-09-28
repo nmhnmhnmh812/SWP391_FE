@@ -1,8 +1,4 @@
-<%-- 
-    Document   : register
-    Created on : Sep 25, 2022, 3:25:01 PM
-    Author     : Admin
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,15 +22,19 @@
             <h2 class="title">REGISTER</h2>
 
             <form class="form">
-                <input class="form-control form-input" type="email" name="email" id="email" onchange="handleValidateEmail()"
+                <input class="form-control form-input" type="email" name="email"  onblur="handleBlurEmail()" id="email" onchange="handleValidateEmail()"
                     placeholder="Enter email" required />
                 <div class="login_valid invalid-feedback"></div><br>
+                
+                <input class="form-control form-input" type="text" name="username" id="username" onchange="handleValidateUsername()"
+                    placeholder="Enter username" required />
+                <div class="login_valid invalid-feedback"></div><br>
 
-                <input class="form-control form-input" type="password" id="password" name="password"
+                <input class="form-control form-input" type="password"  onblur="handleBlurPass()"  id="password" name="password"
                     onchange="handleValidatePass()" placeholder="Enter password" required />
                 <div class="login_valid invalid-feedback"></div><br>
 
-                <input class="form-control form-input" type="password" id="cfpassword" name="cfpassword"
+                <input class="form-control form-input" type="password" id="cfpassword" name="cfpassword" onblur="handleBlurCfpass()" 
                     onchange="handleValidateCFPass()" placeholder="Repeat password" required />
                 <div class="login_valid invalid-feedback"></div><br>
 
@@ -42,7 +42,7 @@
                     required />
                 <div class="login_valid invalid-feedback"></div><br>
 
-                <input class="form-control form-input" type="text" id="phonenumbers" onchange="handleValidatePhone()" name="phonenumbers"
+                <input class="form-control form-input" type="text" id="phonenumbers" onchange="handleValidatePhone()"  onblur="handleBlurNum()"   name="phonenumbers"
                     placeholder="Enter phone numbers" pattern="/^\d{10}$/" required />
                 <div class="login_valid invalid-feedback"></div><br>
 
