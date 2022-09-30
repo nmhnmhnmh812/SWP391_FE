@@ -8,8 +8,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>6HP - Happy Programing</title>
-        <link rel="stylesheet" href="../style/home.css">
-        <link rel="icon" type="image/x-icon" href="../image/mylogo.png">
+        <link rel="stylesheet" href="style/home.css">
+        <link rel="icon" type="image/x-icon" href="image/mylogo.png">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
               integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -21,7 +21,7 @@
         <!-- navbar -->
         <nav id="nav_home" class="navbar navbar-expand-lg navbar-light">
             <div>
-                <a href=""><img class="navbar-brand logo" src="../image/mylogo.png" alt="logo" /></a>
+                <a href=""><img class="navbar-brand logo" src="image/mylogo.png" alt="logo" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -134,7 +134,7 @@
         </div>
 
 
-        <script src="../myjs/header.js"></script>
+        <script src="myjs/header.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

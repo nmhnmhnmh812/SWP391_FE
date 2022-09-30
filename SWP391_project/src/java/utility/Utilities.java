@@ -34,4 +34,31 @@ public class Utilities {
         return null;
     }
     
+        //check existed email
+    public boolean checkExistedEmail(String email) {
+        for(User u : listUser) {
+            if(u.getEmail().equals(email)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    //check existed username
+    public boolean checkExistedUsername(String username) {
+        for(User u : listUser) {
+            if(u.getUsername().equals(username)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        Utilities uti = new Utilities();
+        User u = uti.getUser(8);
+        if(u!=null) {
+            System.out.println(u.toString());
+        } else System.out.println("Fail");
+    }
 }

@@ -5,6 +5,8 @@ const btn_update_profile = document.querySelector('.Profile_btn_update')
 const upload_avt = document.querySelector('.upload-avt')
 const fileInput = document.getElementById('image')
 const fileName = document.getElementById('file-name')
+const wrapAvt = document.querySelector('.wrapper-avt')
+
 
 const handleUpdateProfile = () => {
     for (var i = 0; i < form_input.length; i++) {
@@ -15,6 +17,7 @@ const handleUpdateProfile = () => {
     gender.style.display = 'none'
     btn_update_profile.style.display = 'block'
     upload_avt.style.display = 'block'
+    wrapAvt.classList.add('disable')
 }
 
 const handleDisableProfile = (e) => {
@@ -27,6 +30,7 @@ const handleDisableProfile = (e) => {
     gender.style.display = 'block'
     btn_update_profile.style.display = 'none'
     upload_avt.style.display = 'none'
+    wrapAvt.classList.remove('disable')
 }
 
 

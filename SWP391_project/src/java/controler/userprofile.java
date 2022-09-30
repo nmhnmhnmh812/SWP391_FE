@@ -15,7 +15,7 @@ import utility.Utilities;
  *
  * @author Admin
  */
-public class usesrprofile extends HttpServlet {
+public class userprofile extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -23,9 +23,12 @@ public class usesrprofile extends HttpServlet {
         Utilities uti = new Utilities();
         HttpSession ses = request.getSession();
 
-        User user = (User) ses.getAttribute("user");
-        if (uti.getUser(user.getUserId()) != null) { //tim duoc doi tuong va load thong tin
-            request.setAttribute("userinfor", uti.getUser(user.getUserId()));
+//        User user = (User) ses.getAttribute("user");
+        
+        if (uti.getUser(8) != null) { //tim duoc doi tuong va load thong tin
+            request.setAttribute("userinfor", uti.getUser(8));
+            request.getRequestDispatcher("view/userprofile.jsp").forward(request, response);
+//            request.setAttribute("userinfor", uti.getUser(user.getUserId()));
         } 
         else response.sendRedirect("home"); // ko tim duoc doi tuong chuyen ve trang home
     }

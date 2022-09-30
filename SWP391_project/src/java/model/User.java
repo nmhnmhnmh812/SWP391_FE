@@ -19,14 +19,15 @@ public class User {
     private String fullname;
     private String address;
     private boolean gender;
-    private int phonenumber;
+    private String phonenumber;
     private String avatar;
     private String status;
+    private int role;
 
     public User() {
     }
     
-    public User(int userId, String username, String password, String email, Date dob, String fullname, String address, boolean gender, int phonenumber, String avatar, String status) {
+    public User(int userId, String username, String password, String email, Date dob, String fullname, String address, boolean gender, String status, String avatar, String phonenumber, int role) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -38,6 +39,7 @@ public class User {
         this.phonenumber = phonenumber;
         this.avatar = avatar;
         this.status = status;
+        this.role = role;
     }
 
     public int getUserId() {
@@ -104,11 +106,11 @@ public class User {
         this.gender = gender;
     }
 
-    public int getPhonenumber() {
+    public String getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(int phonenumber) {
+    public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
 
@@ -126,6 +128,19 @@ public class User {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "userId=" + userId + ", username=" + username + ", password=" + password + ", email=" + email + ", dob=" + dob + ", fullname=" + fullname + ", address=" + address + ", gender=" + gender + ", phonenumber=" + phonenumber + ", avatar=" + avatar + ", status=" + status + ", role=" + role + '}';
     }
     
         

@@ -6,12 +6,10 @@
 package dal;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.sql.Date;
 import model.*;
 
 /**
@@ -55,7 +53,7 @@ public class DAO extends DBContext {
 
     //load account from database
     public ArrayList<User> loadListUser() {
-        userList = new ArrayList<User>();
+        userList = new ArrayList<>();
         String sql = "select * from [User]";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -69,11 +67,12 @@ public class DAO extends DBContext {
                 String fullname = rs.getString(6);
                 String address = rs.getString(7);
                 boolean gender = rs.getBoolean(8);
-                int phonenum = Integer.parseInt(rs.getString(9));
-                int role = Integer.parseInt(rs.getString(10));
+                int role = Integer.parseInt(rs.getString(9));
+                String status = rs.getString(10);
                 String avatar = rs.getString(11);
-                String status = rs.getString(12);
-                userList.add(new User(userId, username, password, email, dob, fullname, address, gender, phonenum, avatar, status));
+                String phonenum = rs.getString(12);
+
+                userList.add(new User(userId, username, password, email, dob, fullname, address, gender, status, avatar, phonenum, role));
             }
         } catch (Exception e) {
             status = "Error load user: " + e.getMessage();
@@ -82,20 +81,60 @@ public class DAO extends DBContext {
     }
 
     // update User Profile
-    public void updateUserProfile(String avatar, String fullname, Date dob, String address, String email, String phonenum, boolean gender) {
+    public void updateUserProfile(String avatar, String fullname, Date dob, String address, String email, String phonenum, boolean gender, int userid) {
         String sql = "update [User] set avatar = ?, fullname = ?, dob = ?, address = ?, email = ?, phonenumber = ?, gender = ? where userID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
+
             ps.setString(1, avatar);
             ps.setString(2, fullname);
             ps.setDate(3, dob);
             ps.setString(4, address);
-            ps.setString(4, email);
+            ps.setString(5, email);
             ps.setString(6, phonenum);
             ps.setBoolean(7, gender);
+            ps.setInt(8, userid);
             ps.execute();
         } catch (Exception e) {
             status = "Error at update user profile" + e.getMessage();
+        }
+    }
+
+    //register
+    public void register(String username, String password, String email, Date dob, String fullname, String address, boolean gender, String avata, String phonenmuner) {
+        String sql = "INSERT INTO [dbo].[User]([username],[password],[email],[dob],[fullname],[address],[gender],[role],[status],[avatar],[phonenumber])\n"
+                + "     VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.setString(3, email);
+            ps.setDate(4, dob);
+            ps.setString(5, fullname);
+            ps.setString(6, address);
+            ps.setBoolean(7, gender);
+            ps.setInt(8, 1);
+            ps.setString(9, "inactive");
+            ps.setString(10, avata);
+            ps.setString(11, phonenmuner);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error at register: "+e.getMessage());
+        }
+    }
+    
+    //active account
+    
+    public void activeUser(String username) {
+        String sql = "update [User] set status='active' where username like ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.execute();
+        } catch (Exception e) {
+            status = "Error at update user active" + e.getMessage();
         }
     }
 
@@ -268,4 +307,11 @@ public class DAO extends DBContext {
 //        }
 //
 //    }
+    public static void main(String[] args) {
+        DAO d = new DAO();
+        for (User u : d.loadListUser()) {
+            System.out.println(u.toString());
+        }
+    }
+
 }

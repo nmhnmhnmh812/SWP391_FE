@@ -1,5 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +9,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>6HP - Happy Programing</title>
-        <link rel="stylesheet" href="../style/userprofile.css">
-        <link rel="icon" type="image/x-icon" href="../image/mylogo.png">
+        <link rel="stylesheet" href="style/userprofile.css">
+        <link rel="icon" type="image/x-icon" href="image/mylogo.png">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
               integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -38,39 +39,41 @@
                         </div>
                     </div>
 
-                    <form class="form" action="../update_userprofile" enctype="multipart/form-data" method="post">
+                    <form class="form" action="update_userprofile" enctype="multipart/form-data" method="post">
 
-                        <label for="">Avatar</label>
-                        <div class="contain-avt">
-                            <img class="avt-user" src="../image/bg_login.jpg" alt="avt">
+                        <div class="wrapper-avt">
+                            <label for="">Avatar</label>
+                            <div class="contain-avt">
+                                <img class="avt-user" src="img_upload/${requestScope.userinfor.getAvatar()}" alt="avt">
+                            </div>
                         </div>
                         <div class="form-group upload-avt">
                             <label for="image">Upload image</label> <br />
                             <input type="file" onchange="handleGetImage()" name="image" id="image" class="hiddenInput form-control-active" disabled/>
                             <label for="image" class="lable_imagebtn">Select file</label>
-                            <span id="file-name">No file selected</span>
+                            <span id="file-name">${requestScope.userinfor.getAvatar()}</span>
                         </div><hr />
-                        
+
                         <label for="fullname">Full Name</label>
                         <input class="form-control form-control-active" type="text" name="fullname"
-                               value="Nguyen Minh Thanh" disabled id="fullname" placeholder="Your full name" required />
+                               value="${requestScope.userinfor.getFullname()}" disabled id="fullname" placeholder="Your full name" required />
                         <hr>
                         <label for="dob">Date of birth</label>
-                        <input class="form-control form-control-active" type="date" name="dob" value="2002-09-02" disabled
+                        <input class="form-control form-control-active" type="date" name="dob" value="${requestScope.userinfor.getDob()}" disabled
                                id="dob" placeholder="Your DOB" required />
                         <hr>
                         <label for="address">Address</label>
-                        <input class="form-control form-control-active" type="text" name="address" value="Ha Noi" disabled
+                        <input class="form-control form-control-active" type="text" name="address" value="${requestScope.userinfor.getAddress()}" disabled
                                id="address" placeholder="Your address" required />
                         <hr>
                         <label for="email">Email</label>
                         <input class="form-control form-control-active" type="email" name="email"
-                               value="account123@gmail.com" disabled id="email" placeholder="Your email" required />
+                               value="${requestScope.userinfor.getEmail()}" disabled id="email" placeholder="Your email" required />
                         <hr>
 
                         <label for="phonenumber">Phone numbers</label>
                         <input class="form-control form-control-active" type="text" name="phonenumber"
-                               value="0123456789" disabled id="phonenumber"  placeholder="Your phonenumber"
+                               value="${requestScope.userinfor.getPhonenumber()}" disabled id="phonenumber"  placeholder="Your phonenumber"
                                required />
                         <hr>
 
@@ -78,16 +81,16 @@
 
                         <!-- su dung jstl gan cho value la gia tri cua gender: 'Male' or 'Female' -->
                         <input class="form-control form-control-active gender-value" type="text"
-                               value="Male" disabled id="gender" placeholder="Your gender"
+                               value="${requestScope.userinfor.getGender()}" disabled id="gender" placeholder="Your gender"
                                required />
 
                         <div class="contain-form-gender">
                             <!-- if current gender is male => checked in 'Male input', else => checked 'Female input'  -->
                             Male<input class="form-input-gender form-control-active ml-2 mr-3" type="radio" name="gender"
-                                       value="male" checked disabled id="gender" placeholder="Your gender" required />
+                                       value="male" ${requestScope.userinfor.getGender() == true ? "checked" : ""} disabled id="gender" placeholder="Your gender" required />
 
                             Female<input class="form-input-gender form-control-active  ml-2" type="radio" name="gender"
-                                         value="female" disabled id="gender" placeholder="Your gender" required />
+                                         value="female" ${requestScope.userinfor.getGender() == false ? "checked" : ""} disabled id="gender" placeholder="Your gender" required />
                         </div>
                         <hr>
 
@@ -98,7 +101,7 @@
 
                 <div class="col-md-4 col-sm-12 col-xs-12">
                     <div class="wrap-profile-img" data-aos="fade-left" data-aos-duration="1500">
-                        <img class="profile-img" src="../image/profile_img1.png" alt="img">
+                        <img class="profile-img" src="image/profile_img1.png" alt="img">
                     </div>
                 </div>
 
@@ -117,7 +120,7 @@
         <%@include file="./footer.jsp" %>
 
 
-        <script src="../myjs/userprofile.js"></script>
+        <script src="myjs/profileUser.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

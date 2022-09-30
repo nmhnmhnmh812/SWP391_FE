@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>6HP - Happy Programing</title>
-    <link rel="stylesheet" href="../style/login_register.css">
-    <link rel="icon" type="image/x-icon" href="../image/mylogo.png">
+    <link rel="stylesheet" href="style/login_register.css">
+    <link rel="icon" type="image/x-icon" href="image/mylogo.png">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -20,6 +20,11 @@
         <div class="login_register_form login_form">
             <h2 class="title">LOGIN</h2>
 
+            <div class="mb-3 mt-3">
+                <span class="text-danger">${requestScope.errWrongAcc}</span>
+                
+                <span class="text-success">${requestScope.activeSuccess}</span>
+            </div>
             <form class="form">
                 <input class="form-control form-input" type="email" name="email" id="email" placeholder="Enter email" required /><br>
                 <input class="form-control form-input" type="password" id="password" name="password"

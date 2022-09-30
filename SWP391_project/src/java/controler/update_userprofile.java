@@ -4,24 +4,19 @@
  */
 package controler;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import dal.DAO;
+import java.io.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.nio.file.*;
+import java.text.*;
+import java.sql.Date;
+import model.*;
 
 /**
  *
@@ -40,24 +35,18 @@ public class update_userprofile extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        HttpSession ses = request.getSession();
+        User user = (User) ses.getAttribute("user");
+        
         String fullname = request.getParameter("fullname").trim();
         String address = request.getParameter("address").trim();
         String email = request.getParameter("email").trim();
         String phonenumber = request.getParameter("phonenumber").trim();
-        boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
+        boolean gender = request.getParameter("gender").equals("male") ? true : false;
+        
+        String date = request.getParameter("dob");
+        Date dob = Date.valueOf(date);
 
-        Date dob = null;
-        try {
-            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-//            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            Date date = (Date) formatter.parse(request.getParameter("dob"));
-            DateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
-            String finalDob = formatter1.format(date);
-            dob = new SimpleDateFormat("dd/MM/yyyy").parse(finalDob);
-           
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
 
         String uploadFolder = request.getServletContext().getRealPath("/img_upload");
         Path uploadPath = Paths.get(uploadFolder);
@@ -66,9 +55,16 @@ public class update_userprofile extends HttpServlet {
         }
         Part imagePart = request.getPart("image"); // tra ve doi tuong file 'image'
         String imageFilename = Paths.get(imagePart.getSubmittedFileName()).getFileName().toString();
-        imagePart.write(Paths.get(uploadPath.toString(), imageFilename).toString()); //save to foder 'img_upload'
+
+        if (!imageFilename.equals("")) {
+            imagePart.write(Paths.get(uploadPath.toString(), imageFilename).toString()); //save to foder 'img_upload'
+        }        
+//        System.out.println(fullname + " | " + address + " | " + email + " | " + phonenumber + " | " + gender + " | " + dob + " | " +imageFilename);
+    
+        DAO dao = new DAO();
         
-        System.out.println(fullname+" | "+address+" | "+email+" | "+phonenumber+" | "+gender+" | "+dob+" | "+imageFilename);
+        // nho sua 8 = user.getUserId();
+        dao.updateUserProfile(imageFilename, fullname, dob, address, email, phonenumber, gender, 8);
     }
 
 }
