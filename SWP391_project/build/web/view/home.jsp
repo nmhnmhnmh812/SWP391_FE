@@ -7,8 +7,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>6HP - Happy Programing</title>
-        <link rel="stylesheet" href="../style/home.css">
-        <link rel="icon" type="image/x-icon" href="../image/mylogo.png">
+        <link rel="stylesheet" href="style/myhome.css">
+        <link rel="icon" type="image/x-icon" href="image/mylogo.png">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
               integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -30,7 +30,7 @@
             </div>
 
             <div class="banner_img" data-aos="fade-up" data-aos-duration="1000">
-                <img onclick="handleReverseBanner()" id="imgForBanner" src="../image/banner_img.jpg" alt="image">
+                <img onclick="handleReverseBanner()" id="imgForBanner" src="image/banner_img.jpg" alt="image">
             </div>
         </div>
 
@@ -45,21 +45,21 @@
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-12 items_details_2">
                     <div class="details_2_wrap_img">
-                        <img src="../image/home_img3.png" alt="img_details">
+                        <img src="image/home_img3.png" alt="img_details">
                     </div>
                     <h5>Learning to code</h5>
                 </div>
 
                 <div class="col-md-4 col-sm-6 col-xs-12 items_details_2">
                     <div class="details_2_wrap_img">
-                        <img src="../image/home_img2.png" alt="img_details">
+                        <img src="image/home_img2.png" alt="img_details">
                     </div>
                     <h5>Find mentor help code</h5>
                 </div>
 
                 <div class="col-md-4 col-sm-6 col-xs-12 items_details_2">
                     <div class="details_2_wrap_img">
-                        <img src="../image/home_img1.png" alt="img_details">
+                        <img src="image/home_img1.png" alt="img_details">
                     </div>
                     <h5>Being a hero of coding</h5>
                 </div>
@@ -184,7 +184,7 @@
         <%@include file="./footer.jsp" %>
 
 
-        <script src="../myjs/myhome.js"></script>
+        <script src="myjs/myhome.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

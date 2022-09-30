@@ -5,7 +5,6 @@ const subcate1 = document.querySelector('.firstSubCategory')
 const subcate2 = document.querySelector('.secondSubCategory')
 const updown = document.querySelector('.up_down_icon')
 
-
 // open the bar
 const openBar = () => {
     bar.classList.toggle('active');
@@ -29,4 +28,5 @@ const openCate2 = () => {
     cate2.classList.add('bg_active');
     cate1.classList.remove('bg_active');
 }
+
 

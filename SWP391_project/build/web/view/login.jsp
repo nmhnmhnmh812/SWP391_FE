@@ -25,8 +25,8 @@
                 
                 <span class="text-success">${requestScope.activeSuccess}</span>
             </div>
-            <form class="form">
-                <input class="form-control form-input" type="email" name="email" id="email" placeholder="Enter email" required /><br>
+            <form class="form" action="login" method="post">
+                <input class="form-control form-input" type="text" name="username" id="username" placeholder="Enter username" required /><br>
                 <input class="form-control form-input" type="password" id="password" name="password"
                     placeholder="Enter password" required /><br><br /><br>
 

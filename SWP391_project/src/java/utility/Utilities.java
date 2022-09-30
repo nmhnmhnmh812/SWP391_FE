@@ -61,4 +61,14 @@ public class Utilities {
             System.out.println(u.toString());
         } else System.out.println("Fail");
     }
+
+    public User getExistedUser(String username, String password) {
+        for(User u : listUser) {
+            if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
+                return u;
+            }
+        }
+        return null;
+
+    }
 }
