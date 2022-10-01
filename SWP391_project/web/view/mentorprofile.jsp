@@ -8,8 +8,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>6HP - Happy Programing</title>
-        <link rel="stylesheet" href="../style/mentorprofile.css">
-        <link rel="icon" type="image/x-icon" href="../image/mylogo.png">
+        <link rel="stylesheet" href="style/profilementor.css">
+        <link rel="icon" type="image/x-icon" href="image/mylogo.png">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
               integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -23,7 +23,7 @@
         <!--header-->
         <%@include file="./header.jsp" %>
 
-        <div class="container mb-5">
+        <div class="container mb-5 contain_mentor_infor">
             <div class="part mt-5 mb-5">
                 <h4 class="part-title">Mentor's profile</h4>
                 <div class="line_part"></div>
@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12 wrap-infor" data-aos="fade-up" data-aos-duration="1000">
                         <div class="col-md-3 col-sm-2 col-xs-12 cv-avt-mentor">
-                            <img class="rounded-circle" src="../image/avtuser.png" alt="image">
+                            <img class="rounded-circle" src="image/avtuser.png" alt="image">
                         </div>
 
                         <div class="col-md-9 col-sm-10 col-xs-12 cv-personal-infor">
@@ -136,6 +136,28 @@
                 <div class="line_part"></div>
             </div>
 
+            <!--dung jstl check dieu kien da la mentor cua mentee moi hien thi doan nay-->
+            
+<!--            <div class="contain_form_comment">
+                <form class="form_comment">
+                    <label for="rate" class="form_comment_lable">Rate</label>
+                    <select name="rate" id="rate">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <i class="fa-solid fa-star"></i><br>
+                    <label for="comment" class="form_comment_lable">Comment</label>
+                    <textarea name="comment" id="comment" rows="5" placeholder="Your comment..."></textarea>
+                    <button class="btn_comment" type="submit">Submit</button>
+                </form>
+            </div>-->
+
+            <!--dung jstl check dieu kien da la mentor cua mentee moi hien thi doan nay-->
+
+
             <div class="rate-comment">
                 <div class="items-rate-comment" data-aos="fade-left" data-aos-duration="1000">
                     <span class="rating"><i class="fa-solid fa-star"></i><span class="rating-number">4/5</span></span>
@@ -158,7 +180,7 @@
         <!--footer-->
         <%@include file="./footer.jsp" %>
 
-        <script src="../myjs/mentorprofile.js"></script>
+        <script src="myjs/mentorprofile.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

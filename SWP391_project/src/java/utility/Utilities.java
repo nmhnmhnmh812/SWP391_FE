@@ -52,15 +52,7 @@ public class Utilities {
             }
         }
         return true;
-    }
-    
-    public static void main(String[] args) {
-        Utilities uti = new Utilities();
-        User u = uti.getUser(8);
-        if(u!=null) {
-            System.out.println(u.toString());
-        } else System.out.println("Fail");
-    }
+    }   
 
     public User getExistedUser(String username, String password) {
         for(User u : listUser) {
@@ -71,4 +63,15 @@ public class Utilities {
         return null;
 
     }
+    
+    
+    //main to test function working or not
+    
+//    public static void main(String[] args) {
+//        Utilities uti = new Utilities();
+//        User u = uti.getUser(8);
+//        if(u!=null) {
+//            System.out.println(u.toString());
+//        } else System.out.println("Fail");
+//    }
 }

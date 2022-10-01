@@ -36,7 +36,7 @@
 
 
 .wrap-profile {
-    margin: 100px 0;
+    padding: 200px 0 100px 0;
 }
 
 .Profile-line {
@@ -88,7 +88,7 @@
 
 .wrap-profile-img {
     margin-left: 100px;
-    margin-top: 100px;
+    position: fixed;
 }
 
 .profile-img {
@@ -175,49 +175,3 @@
     display: none;
 }
 
-
-/* footer */
-
-/* footer */
-.footer {
-    background-color: #001e00;
-    text-align: center;
-    color: #fff;
-    padding: 100px 0;
-}
-
-.footer .copyright {
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.footer_brand {
-    color: #14a800;
-    font-size: 25px;
-    margin-left: 5px;
-}
-
-.footer_icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.footer_icon span {
-    margin-right: 5px;
-}
-
-.footer_icon i {
-    color: #fff;
-    margin: 0 5px;
-    font-size: 30px;
-}
-
-.footer_icon i:hover {
-    color: #65C18C;
-    margin: 0 5px;
-    font-size: 30px;
-}

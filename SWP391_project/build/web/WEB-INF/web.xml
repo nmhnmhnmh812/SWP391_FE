@@ -32,6 +32,10 @@
         <servlet-name>logOut</servlet-name>
         <servlet-class>controler.logOut</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>mentorProfile</servlet-name>
+        <servlet-class>controler.mentorProfile</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>update_userprofile</servlet-name>
         <url-pattern>/update_userprofile</url-pattern>
@@ -59,6 +63,10 @@
     <servlet-mapping>
         <servlet-name>logOut</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mentorProfile</servlet-name>
+        <url-pattern>/mentorprofile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

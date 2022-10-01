@@ -58,7 +58,7 @@ public class demo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("view/demo.jsp").forward(request, response);
+        request.getRequestDispatcher("view/viewmentor.jsp").forward(request, response);
     }
 
     /**
