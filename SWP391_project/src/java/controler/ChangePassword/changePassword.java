@@ -80,6 +80,9 @@ public class changePassword extends HttpServlet {
             request.getSession().removeAttribute("user");
             response.sendRedirect("login");
         }
+        else{
+            request.setAttribute("isError", true);
+        }
     }
 
     /**
