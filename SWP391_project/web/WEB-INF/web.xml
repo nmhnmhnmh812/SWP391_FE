@@ -36,6 +36,14 @@
         <servlet-name>mentorProfile</servlet-name>
         <servlet-class>controler.mentorProfile</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>changePassword</servlet-name>
+        <servlet-class>controler.ChangePassword.changePassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmAuthentication</servlet-name>
+        <servlet-class>controler.ChangePassword.ConfirmAuthentication</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>update_userprofile</servlet-name>
         <url-pattern>/update_userprofile</url-pattern>
@@ -67,6 +75,14 @@
     <servlet-mapping>
         <servlet-name>mentorProfile</servlet-name>
         <url-pattern>/mentorprofile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changePassword</servlet-name>
+        <url-pattern>/changePassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmAuthentication</servlet-name>
+        <url-pattern>/ConfirmAuthentication</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
