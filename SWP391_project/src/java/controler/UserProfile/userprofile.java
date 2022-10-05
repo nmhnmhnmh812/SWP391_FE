@@ -1,4 +1,4 @@
-package controler;
+package controler.UserProfile;
 
 import dal.DAO;
 import java.io.IOException;

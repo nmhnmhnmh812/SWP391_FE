@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controler;
+package controler.Login;
 
 import dal.DAO;
 import java.io.IOException;
@@ -49,7 +49,7 @@ public class login extends HttpServlet {
             
         }
         else {      // khong tim dc user
-            request.setAttribute("errAccNotExist", "Username or password is in correct!");
+            request.setAttribute("errWrongAcc", "Username or password is in correct!");
             request.getRequestDispatcher("view/login.jsp").forward(request, response);
         }
     }

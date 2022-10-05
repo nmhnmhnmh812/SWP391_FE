@@ -140,7 +140,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "userId=" + userId + ", username=" + username + ", password=" + password + ", email=" + email + ", dob=" + dob + ", fullname=" + fullname + ", address=" + address + ", gender=" + gender + ", phonenumber=" + phonenumber + ", avatar=" + avatar + ", status=" + status + ", role=" + role + '}';
+        return "User{" + "userId=" + userId + ", username=" + username + ", password=" + password + ", email=" + email + ", dob=" + getGender() + ", fullname=" + fullname + ", address=" + address + ", gender=" + gender + ", phonenumber=" + phonenumber + ", avatar=" + avatar + ", status=" + status + ", role=" + role + '}';
     }
     
         

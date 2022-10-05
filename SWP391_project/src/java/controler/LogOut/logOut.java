@@ -1,5 +1,5 @@
 
-package controler;
+package controler.LogOut;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -24,7 +24,7 @@ public class logOut extends HttpServlet {
         if(user != null) {
             session.removeAttribute("user"); //xoa bo session
         }
-        response.sendRedirect("login");
+        response.sendRedirect("home");
     }
 
    

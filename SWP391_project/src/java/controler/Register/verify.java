@@ -1,5 +1,5 @@
 
-package controler;
+package controler.Register;
 
 import dal.DAO;
 import java.io.IOException;
