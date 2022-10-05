@@ -1,14 +1,17 @@
-
 package model;
+
+import java.util.ArrayList;
 
 /**
  *
  * @author Admin
  */
 public class Skill {
+
     private int skillId;
     private String skillName;
     private String skillDescription;
+    private ArrayList<Mentor> mentors;
 
     public Skill() {
     }
@@ -43,10 +46,20 @@ public class Skill {
         this.skillDescription = skillDescription;
     }
 
+    public ArrayList<Mentor> getMentors() {
+        return mentors;
+    }
+
+    public void setMentors(ArrayList<Mentor> mentors) {
+        this.mentors = mentors;
+    }
+
     @Override
     public String toString() {
-        return "Skill{" + "skillId=" + skillId + ", skillName=" + skillName + ", skillDescription=" + skillDescription + '}';
+        return "Skill{" + "skillId=" + skillId + ", skillName=" + skillName + ", skillDescription=" + skillDescription + ", mentors=" + mentors + '}';
     }
     
+
     
+
 }

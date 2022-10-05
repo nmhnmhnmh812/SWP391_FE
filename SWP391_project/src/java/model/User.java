@@ -4,13 +4,14 @@
  */
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
  * @author Admin
  */
 public class User {
+
     private int userId;
     private String username;
     private String password;
@@ -26,7 +27,7 @@ public class User {
 
     public User() {
     }
-    
+
     public User(int userId, String username, String password, String email, Date dob, String fullname, String address, boolean gender, String status, String avatar, String phonenumber, int role) {
         this.userId = userId;
         this.username = username;
@@ -142,6 +143,5 @@ public class User {
     public String toString() {
         return "User{" + "userId=" + userId + ", username=" + username + ", password=" + password + ", email=" + email + ", dob=" + getGender() + ", fullname=" + fullname + ", address=" + address + ", gender=" + gender + ", phonenumber=" + phonenumber + ", avatar=" + avatar + ", status=" + status + ", role=" + role + '}';
     }
-    
-        
+
 }
