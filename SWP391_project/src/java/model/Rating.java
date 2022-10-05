@@ -6,56 +6,51 @@ package model;
  * @author Admin
  */
 public class Rating {
-    private int rateId;
-    private int mentorId;
-    private int menteeId;
+    private int rateID;
+    private Mentor mentor;
+    private Mentee mentee;
     private int rateStar;
 
     public Rating() {
     }
 
-    public Rating(int rateId, int mentorId, int menteeId, int rateStar) {
-        this.rateId = rateId;
-        this.mentorId = mentorId;
-        this.menteeId = menteeId;
+    public Rating(int rateID, Mentor mentor, Mentee mentee, int rateStar) {
+        this.rateID = rateID;
+        this.mentor = mentor;
+        this.mentee = mentee;
         this.rateStar = rateStar;
     }
 
-    public int getRateId() {
-        return rateId;
+    public int getRateID() {
+        return rateID;
     }
 
-    public void setRateId(int rateId) {
-        this.rateId = rateId;
+    public Mentor getMentor() {
+        return mentor;
     }
 
-    public int getMentorId() {
-        return mentorId;
-    }
-
-    public void setMentorId(int mentorId) {
-        this.mentorId = mentorId;
-    }
-
-    public int getMenteeId() {
-        return menteeId;
-    }
-
-    public void setMenteeId(int menteeId) {
-        this.menteeId = menteeId;
+    public Mentee getMentee() {
+        return mentee;
     }
 
     public int getRateStar() {
         return rateStar;
     }
 
-    public void setRateStar(int rateStar) {
-        this.rateStar = rateStar;
+    public void setRateID(int rateID) {
+        this.rateID = rateID;
     }
 
-    @Override
-    public String toString() {
-        return "Rating{" + "rateId=" + rateId + ", mentorId=" + mentorId + ", menteeId=" + menteeId + ", rateStar=" + rateStar + '}';
+    public void setMentor(Mentor mentor) {
+        this.mentor = mentor;
+    }
+
+    public void setMentee(Mentee mentee) {
+        this.mentee = mentee;
+    }
+
+    public void setRateStar(int rateStar) {
+        this.rateStar = rateStar;
     }
     
     

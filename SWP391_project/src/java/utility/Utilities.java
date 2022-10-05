@@ -63,25 +63,25 @@ public class Utilities {
 
     }
 
-    public ArrayList<User> findMentorByTech(String tech) {
-        ArrayList<Mentor> listMentor = d.getMentorWithTech(tech);
-        ArrayList<User> listFound = new ArrayList<>();
+//    public ArrayList<User> findMentorByTech(String tech) {
+//        ArrayList<Mentor> listMentor = d.getMentorWithTech(tech);
+//        ArrayList<User> listFound = new ArrayList<>();
+//
+//        for (User u : listUser) {
+//            for (Mentor i : listMentor) {
+//                if (u.getUserId() == i.getUserId()) {
+//                    listFound.add(u);
+//                }
+//            }
+//        }
+//        return listFound;
+//    }
 
-        for (User u : listUser) {
-            for (Mentor i : listMentor) {
-                if (u.getUserId() == i.getUserId()) {
-                    listFound.add(u);
-                }
-            }
-        }
-        return listFound;
-    }
-
-    public ArrayList<Rating> getRatingStar(String tech) {
+ //   public ArrayList<Rating> getRatingStar(String tech) {
 ////        int totalRate = 0;
 ////        int count = 0;
-        ArrayList<Mentor> listMentor = d.getMentorWithTech(tech);
-        ArrayList<Rating> listRate = new ArrayList<>();
+//        ArrayList<Mentor> listMentor = d.getMentorWithTech(tech);
+//        ArrayList<Rating> listRate = new ArrayList<>();
 
 //        for (Mentor m : listMentor) {
 //            for (Rating r : d.getRating()) {
@@ -93,8 +93,8 @@ public class Utilities {
 //        }
 
 ////        int rateStar = totalRate / count; //chia lay phan nguyen
-        return listRate;
-    }
+        //return listRate;
+  //  }
 
 //    public void getRate(String tech) {
 //        ArrayList<Mentor> listMentor = d.getMentorWithTech(tech);
@@ -119,12 +119,12 @@ public class Utilities {
 //    public ArrayList<String> 
     //main to test function working or not
     public static void main(String[] args) {
-        Utilities uti = new Utilities();
-        int totalRate = 0;
-        for (Rating r : uti.getRatingStar("c")) {
-////            totalRate += r.getRateStar();
-            System.out.println(r.toString());
-        }
-//        System.out.println(totalRate);
+//        Utilities uti = new Utilities();
+//        int totalRate = 0;
+//        for (Rating r : uti.getRatingStar("c")) {
+//////            totalRate += r.getRateStar();
+//            System.out.println(r.toString());
+//        }
+////        System.out.println(totalRate);
     }
 }
