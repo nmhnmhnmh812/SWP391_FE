@@ -40,10 +40,6 @@
         <servlet-name>changePassword</servlet-name>
         <servlet-class>controler.ChangePassword.changePassword</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ConfirmAuthentication</servlet-name>
-        <servlet-class>controler.ChangePassword.ConfirmAuthentication</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>update_userprofile</servlet-name>
         <url-pattern>/update_userprofile</url-pattern>
@@ -78,11 +74,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>changePassword</servlet-name>
-        <url-pattern>/changePassword</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ConfirmAuthentication</servlet-name>
-        <url-pattern>/ConfirmAuthentication</url-pattern>
+        <url-pattern>/change-password</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

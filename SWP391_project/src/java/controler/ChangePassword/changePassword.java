@@ -57,7 +57,7 @@ public class changePassword extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("view/ChangePassword/ChangePassword.jsp").forward(request, response);
+        request.getRequestDispatcher("view/ChangePassword/changepassword.jsp").forward(request, response);
     }
 
     /**
@@ -71,17 +71,30 @@ public class changePassword extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String oldPass = request.getParameter("oldPass");
         String newPass = request.getParameter("newPass");
         String cfNewPass = request.getParameter("cfNewPass");
         User u = (User)request.getSession(true).getAttribute("user");
+        boolean isCorrect = false;
         DAO dao = new DAO();
-        if(newPass.equals(cfNewPass)){
+        if(u.getPassword().equals(oldPass)){
+            if(newPass.equals(cfNewPass)){
             dao.changePassword(u.getUserId(), newPass);
             request.getSession().removeAttribute("user");
+            isCorrect = true;
+            }
+            else{
+                request.setAttribute("errRpPassNotMatch", "Confirm password does not match!!!");
+            }
+        }
+        else{
+            request.setAttribute("errNewPassNotValid", "Wrong password!!!");    
+        }
+        if(isCorrect){
             response.sendRedirect("login");
         }
         else{
-            request.setAttribute("isError", true);
+            request.getRequestDispatcher("view/ChangePassword/changepassword.jsp").forward(request, response);
         }
     }
 
