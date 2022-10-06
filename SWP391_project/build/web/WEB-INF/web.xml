@@ -40,6 +40,10 @@
         <servlet-name>search</servlet-name>
         <servlet-class>controler.Search.search</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>commentMentor</servlet-name>
+        <servlet-class>controler.MentorProfile.commentMentor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>update_userprofile</servlet-name>
         <url-pattern>/update_userprofile</url-pattern>
@@ -75,6 +79,10 @@
     <servlet-mapping>
         <servlet-name>search</servlet-name>
         <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>commentMentor</servlet-name>
+        <url-pattern>/commentMentor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
