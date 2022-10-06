@@ -83,6 +83,53 @@ public class DAO extends DBContext {
         return userList;
     }
 
+    //insert comment to DB
+    public void insertComment(Comment c) {
+        String sql = "INSERT INTO [dbo].[Comment]\n"
+                + "           ([mentorID]\n"
+                + "           ,[menteeID]\n"
+                + "           ,[cmtContent]\n"
+                + "           ,[time])\n"
+                + "     VALUES\n"
+                + "           (?,\n"
+                + "           ?,\n"
+                + "           ?,\n"
+                + "           ?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, c.getMentor().getMentorID());
+            ps.setInt(2, c.getMentee().getMenteeID());
+            ps.setString(3, c.getCmtContent());
+            ps.setDate(4, c.getTime());
+            ps.execute();
+        } catch (Exception e) {
+            status = "Error at update user profile" + e.getMessage();
+        }
+    }
+
+    //insert rate to DB
+    public void insertRate(Rating r) {
+        String sql = "INSERT INTO [dbo].[Rating]\n"
+                + "           ([mentorID]\n"
+                + "           ,[menteeID]\n"
+                + "           ,[rateStar])\n"
+                + "     VALUES\n"
+                + "           (?,\n"
+                + "           ?,\n"
+                + "           ?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, r.getMentor().getMentorID());
+            ps.setInt(2, r.getMentee().getMenteeID());
+            ps.setInt(3, r.getRateStar());
+            ps.execute();
+        } catch (Exception e) {
+            status = "Error at update user profile" + e.getMessage();
+        }
+    }
+
     // update User Profile
     public void updateUserProfile(String avatar, String fullname, Date dob, String address, String email, String phonenum, boolean gender, int userid) {
         String sql = "update [User] set avatar = ?, fullname = ?, dob = ?, address = ?, email = ?, phonenumber = ?, gender = ? where userID = ?";
@@ -165,7 +212,6 @@ public class DAO extends DBContext {
 //
 //        return listMentor;
 //    }
-
     public ArrayList<String> getTechOfMentor(int userId) {
         ArrayList<String> listTech = new ArrayList<>();
 
@@ -232,7 +278,6 @@ public class DAO extends DBContext {
 //
 //        return listEnrollSkill;
 //    }
-
     public HashMap<Integer, Float> getRateByMentorID() {
         HashMap<Integer, Float> ratesHashMap = new HashMap<>();
         String sql = "select r.mentorID,cast((sum(rateStar)) as float) / cast((count(rateStar)) as float) as 'averageStar' \n"
@@ -255,7 +300,191 @@ public class DAO extends DBContext {
         return ratesHashMap;
     }
 
-    //load rating
+    //Get list of skills belong to a mentor 
+    public ArrayList<Skill> getSkills(Mentor m) {
+        ArrayList<Skill> skills = new ArrayList<>();
+        int mentorID = m.getMentorID();
+        String sql = "select a.skillID,a.skillName from Mentor m,\n"
+                + "(select s.skillID,es.mentorID,s.skillName from Skill s inner join EnrollSkill es \n"
+                + "on s.skillID = es.skillID) a\n"
+                + "where m.mentorID = a.mentorID and m.mentorID = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Skill s = new Skill();
+                s.setSkillId(Integer.parseInt(rs.getString(1)));
+                s.setSkillName(rs.getString(2));
+                skills.add(s);
+            }
+        } catch (Exception e) {
+            status = "Error load enroll skill: " + e.getMessage();
+        }
+
+        return skills;
+    }
+
+    //get profile by mentorID
+    public Profile getProfile(Mentor m) {
+        int mentorID = m.getMentorID();
+        String sql = "select * from [Profile] p\n"
+                + "where p.mentorID=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Profile p = new Profile();
+                p.setProfileID(rs.getInt(1));
+                p.setMentor(m);
+                p.setExperience(rs.getString(4));
+                p.setAchievement(rs.getString(3));
+                p.setBio(rs.getString(5));
+                return p;
+            }
+        } catch (Exception e) {
+            status = "Error load enroll skill: " + e.getMessage();
+        }
+
+        return null;
+    }
+
+    //get user by mentorID 
+    public User getUser(Mentor m) {
+        int mentorID = m.getMentorID();
+        String sql = "select u.fullname,u.dob,u.email,u.address,u.phonenumber,u.gender\n"
+                + "from [User] u, Mentor m\n"
+                + "where u.userID=m.userID and m.mentorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                User u = new User();
+                u.setFullname(rs.getString(1));
+                u.setDob(rs.getDate(2));
+                u.setEmail(rs.getString(3));
+                u.setAddress(rs.getString(4));
+                u.setPhonenumber(rs.getString(5));
+                u.setGender(rs.getBoolean(6));
+                return u;
+            }
+        } catch (Exception e) {
+            status = "Error load enroll skill: " + e.getMessage();
+        }
+
+        return null;
+    }
+
+    //get rates of a mentor
+    public ArrayList<Rating> getRates(Mentor m) {
+        ArrayList<Rating> rates = new ArrayList<>();
+        int mentorID = m.getMentorID();
+        String sql = "select * from Rating r\n"
+                + "where r.mentorID = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Rating r = new Rating();
+                r.setMentor(m);
+                Mentee mt = new Mentee();
+                mt.setMenteeID(rs.getInt(3));
+                r.setMentee(mt);
+                r.setRateID(rs.getInt(1));
+                r.setRateStar(rs.getInt(4));
+                rates.add(r);
+            }
+        } catch (Exception e) {
+            status = "Error load enroll skill: " + e.getMessage();
+        }
+
+        return rates;
+    }
+
+    //get comments of a mentor
+    public ArrayList<Comment> getComments(Mentor m) {
+        ArrayList<Comment> comments = new ArrayList<>();
+        int mentorID = m.getMentorID();
+        String sql = "select * from Comment c\n"
+                + "where c.mentorID = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Comment c = new Comment();
+                c.setMentor(m);
+                Mentee mt = new Mentee();
+                mt.setMenteeID(rs.getInt(3));
+                c.setMentee(mt);
+                c.setCommentID(rs.getInt(1));
+                c.setCmtContent(rs.getString(4));
+                c.setTime(rs.getDate(5));
+                comments.add(c);
+            }
+        } catch (Exception e) {
+            status = "Error load enroll skill: " + e.getMessage();
+        }
+
+        return comments;
+    }
+
+    //get mentee by user
+    public Mentee getMentee(User u) {
+        int userID = (u != null) ? u.getUserId() : -1;
+        String sql = "select mt.menteeID from Mentee mt, [User] u\n"
+                + "where mt.userID=u.userID and u.userID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, userID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Mentee mt = new Mentee();
+                mt.setUser(u);
+                mt.setMenteeID(rs.getInt(1));
+                return mt;
+            }
+        } catch (Exception e) {
+            status = "Error load enroll skill: " + e.getMessage();
+        }
+
+        return null;
+    }
+
+    public Invitation getInvitation(Mentor m, Mentee mt) {
+        int mentorID = m.getMentorID();
+        int menteeID = (mt != null) ? mt.getMenteeID() : -1;
+        String sql = "select * from Invitation i\n"
+                + "where i.menteeID=? and i.mentorID=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ps.setInt(2, menteeID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Invitation i = new Invitation();
+                i.setInvitationID(rs.getInt(1));
+                i.setMentor(m);
+                i.setMentee(mt);
+                i.setStatus(rs.getString(4));
+                i.setTime(rs.getDate(5));
+                return i;
+            }
+        } catch (Exception e) {
+            status = "Error load enroll skill: " + e.getMessage();
+        }
+
+        return null;
+    }
+
+//load rating
 //    //load post from database
 //    public void loadPost() {
 //        postList = new ArrayList<Post>();
@@ -427,15 +656,24 @@ public class DAO extends DBContext {
 //    }
     public static void main(String[] args) {
         DAO d = new DAO();
-//        for (User u : d.loadListUser()) {
-//            System.out.println(u.toString());
+        Mentor m = new Mentor();
+        Mentee mt = new Mentee();
+        m.setMentorID(1);
+        mt.setMenteeID(1);
+//        User u = d.getUser(m);
+//        System.out.println(u.getFullname());
+//        ArrayList<Skill> s = new ArrayList<>();
+//        s = d.getSkills(m);
+//        for (Skill skill : s) {
+//            System.out.println(skill.getSkillName());
 //        }
-        HashMap<Integer, Float> rates = d.getRateByMentorID();
-        for (Map.Entry<Integer, Float> r : rates.entrySet()) {
-            System.out.println(r.getKey() + " " + r.getValue());
-
-        }
+        Comment c = new Comment();
+        c.setMentee(mt);
+        c.setMentor(m);
+        java.util.Date utilDate = new java.util.Date();
+        c.setTime(new Date(utilDate.getTime()));
+        c.setCmtContent("test 6/10");
+        d.insertComment(c);
 
     }
-
 }

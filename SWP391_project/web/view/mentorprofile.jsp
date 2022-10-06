@@ -22,7 +22,7 @@
 
         <!--header-->
         <%@include file="./header.jsp" %>
-
+        
         <div class="container mb-5 contain_mentor_infor">
             <div class="part mt-5 mb-5">
                 <h4 class="part-title">Mentor's profile</h4>
@@ -37,35 +37,35 @@
                         </div>
 
                         <div class="col-md-9 col-sm-10 col-xs-12 cv-personal-infor">
-                            <h2 class="ml-3">Nguyen Van A</h2>
+                            <h2 class="ml-3">${u.fullname}</h2>
 
                             <div class="cv-content-infor">
                                 <div class="col-md-6 col-sm-6 col-xs-12 cv-left-content-infor">
                                     <div class="item-content-infor mt-3 mb-3">
                                         <i class="ml-1 fa-solid fa-calendar-days"></i>
-                                        <span class="ml-2 content-infor">19/05/1992</span>
+                                        <span class="ml-2 content-infor">${u.dob}</span>
                                     </div>
 
                                     <div class="item-content-infor mt-3 mb-3">
                                         <i class="ml-1 fa-solid fa-envelope"></i>
-                                        <span class="ml-2 content-infor">hotro@gmail.com</span>
+                                        <span class="ml-2 content-infor">${u.email}</span>
                                     </div>
 
                                     <div class="item-content-infor mt-3 mb-3">
                                         <i class="ml-1 fa-solid fa-location-arrow"></i>
-                                        <span class="ml-2 content-infor">Cau Giay, Ha Noi</span>
+                                        <span class="ml-2 content-infor">${u.address}</span>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 col-sm-6 col-xs-12 cv-right-content-infor">
                                     <div class="item-content-infor mt-3 mb-3">
                                         <i class="ml-1 fa-solid fa-phone"></i>
-                                        <span class="ml-2 content-infor">0123456789</span>
+                                        <span class="ml-2 content-infor">${u.phonenumber}</span>
                                     </div>
 
                                     <div class="item-content-infor mt-3 mb-3">
                                         <i class="ml-1 fa-solid fa-user"></i>
-                                        <span class="ml-2 content-infor">Man</span>
+                                        <span class="ml-2 content-infor">${u.gender}</span>
                                     </div>
 
                                 </div>
@@ -84,12 +84,13 @@
                             <span class="ml-2 content-infor">Skills</span>
                         </div>
 
-                        <div class="main-content-infor">
-                            <p class="subtitle">Programing</p>
-                            <p>Java, Javascript, Python, C#</p>
-                            <p class="subtitle">Soft Skills</p>
-                            <p>Good at English communication, Teamwork</p>
-                        </div>
+
+                        <c:forEach var="skill" items="${requestScope.s}">
+                            <div class="main-content-infor">
+                                ${skill.skillName}
+                            </div>
+                        </c:forEach> 
+
 
                     </div>
 
@@ -100,9 +101,7 @@
                         </div>
 
                         <div class="main-content-infor">
-                            <p>FPT University</p>
-                            <p>Major: IT</p>
-                            <p>GPA: 8</p>
+                            <p>${p.experience}</p>                       
                         </div>
                     </div>
 
@@ -118,10 +117,8 @@
                         </div>
 
                         <div class="main-content-infor">
-                            <p class="subtitle">Programing</p>
-                            <p>Java, Javascript, Python, C#</p>
-                            <p class="subtitle">Soft Skills</p>
-                            <p>Good at English communication, Teamwork</p>
+                            <p class="subtitle">${p.achievement}</p>
+
                         </div>
 
                     </div>
@@ -135,61 +132,69 @@
                 <h4 class="part-title">Comment and rate</h4>
                 <div class="line_part"></div>
             </div>
+            <c:if test="${i.status eq 'Accepted'}">
+                <form action="mentorprofile" method="POST">
+                    <!--dung jstl check dieu kien da la mentor cua mentee moi hien thi doan nay-->
+                    <input name="hiddenMentorID" type="hidden" value="${p.mentor.mentorID}">
+                    <div class="contain_form_comment">
+                        <form class="form_comment">
+                            <label for="rate" class="form_comment_lable">Rate</label>
+                            <select name="rate" id="rate">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <i class="fa-solid fa-star"></i><br>
+                            <label for="comment" class="form_comment_lable">Comment</label>
+                            <textarea name="comment" id="comment" rows="5" placeholder="Your comment..."></textarea>
+                            <button class="btn_comment" type="submit">Submit</button>
+                        </form>
+                    </div>
 
-            <!--dung jstl check dieu kien da la mentor cua mentee moi hien thi doan nay-->
-            
-<!--            <div class="contain_form_comment">
-                <form class="form_comment">
-                    <label for="rate" class="form_comment_lable">Rate</label>
-                    <select name="rate" id="rate">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <i class="fa-solid fa-star"></i><br>
-                    <label for="comment" class="form_comment_lable">Comment</label>
-                    <textarea name="comment" id="comment" rows="5" placeholder="Your comment..."></textarea>
-                    <button class="btn_comment" type="submit">Submit</button>
+                    <!--dung jstl check dieu kien da la mentor cua mentee moi hien thi doan nay-->                     
                 </form>
-            </div>-->
 
-            <!--dung jstl check dieu kien da la mentor cua mentee moi hien thi doan nay-->
+            </c:if>
+
 
 
             <div class="rate-comment">
-                <div class="items-rate-comment" data-aos="fade-left" data-aos-duration="1000">
-                    <span class="rating"><i class="fa-solid fa-star"></i><span class="rating-number">4/5</span></span>
-                    <p class="cv-comment">This mentor is quite dedicated, everybody should choose him to be your own mentor.</p>
-                </div>
+                <c:forEach var="rate" items="${requestScope.r}">
+                    <c:forEach var="comment" items="${requestScope.c}">
+                        <c:if test="${rate.mentor.mentorID == comment.mentor.mentorID && rate.mentee.menteeID == comment.mentee.menteeID}">
+                            <div class="items-rate-comment" data-aos="fade-left" data-aos-duration="1000">
+                                <span class="rating"><i class="fa-solid fa-star"></i><span class="rating-number">${rate.rateStar}</span></span>
+                                <p class="cv-comment">${comment.cmtContent}</p>
+                            </div>
+                        </div>
+                    </c:if>
+                </c:forEach>
+            </c:forEach>
 
-                <div class="items-rate-comment" data-aos="fade-left" data-aos-duration="1000">
-                    <span class="rating"><i class="fa-solid fa-star"></i><span class="rating-number">5/5</span></span>
-                    <p class="cv-comment">With the dedicated support of this mentor, I am confident with my knowledge now.</p>
-                </div>
 
-            </div>
         </div>
+    </div>
 
-        <!-- scroll to top -->
-        <div>
-            <button onclick="topFunction()" id="myBtn" class="scrollBtn" title="Go to top">Top</button>
-        </div>
+    <!-- scroll to top -->
+    <div>
+        <button onclick="topFunction()" id="myBtn" class="scrollBtn" title="Go to top">Top</button>
+    </div>
 
-        <!--footer-->
-        <%@include file="./footer.jsp" %>
+    <!--footer-->
+    <%@include file="./footer.jsp" %>
 
-        <script src="myjs/mentorprofile.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-        crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script>
-                AOS.init();
-        </script>
-    </body>
+    <script src="myjs/mentorprofile.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+            AOS.init();
+    </script>
+</body>
 </html>
