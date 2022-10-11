@@ -20,8 +20,8 @@
     </head>
     <body>
 
-        <!-- header -->
-        <%@include file="./header.jsp" %>
+        <!--header-->
+        <c:import url="./header.jsp"/>
 
         <!-- Outstanding Mentors with techology -->
 

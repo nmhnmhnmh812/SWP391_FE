@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import model.*;
+import sun.nio.cs.MS1250;
 
 /**
  *
@@ -437,7 +438,8 @@ public class DAO extends DBContext {
                 Comment c = new Comment();
                 c.setMentor(m);
                 Mentee mt = new Mentee();
-                mt.setMenteeID(rs.getInt(3));
+                mt = getMentee(rs.getInt(3));
+                //mt.setMenteeID(rs.getInt(3));
                 c.setMentee(mt);
                 c.setCommentID(rs.getInt(1));
                 c.setCmtContent(rs.getString(4));
@@ -473,6 +475,30 @@ public class DAO extends DBContext {
         return null;
     }
 
+    //get mentee by menteeID
+    public Mentee getMentee(int menteeID) {
+        String sql = "select mt.menteeID,u.fullname,u.userID from Mentee mt, [User] u\n"
+                + "where mt.userID=u.userID and mt.menteeID=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, menteeID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Mentee mt = new Mentee();
+                User u = new User();
+                u.setUserId(rs.getInt(3));
+                u.setFullname(rs.getString(2));
+                mt.setMenteeID(rs.getInt(1));
+                mt.setUser(u);
+                return mt;
+            }
+        } catch (Exception e) {
+            status = "Error load enroll skill: " + e.getMessage();
+        }
+
+        return null;
+    }
+
     public Invitation getInvitation(Mentor m, Mentee mt) {
         int mentorID = m.getMentorID();
         int menteeID = (mt != null) ? mt.getMenteeID() : -1;
@@ -497,6 +523,26 @@ public class DAO extends DBContext {
         }
 
         return null;
+    }
+
+    //get mentors who teach a skill
+    public ArrayList<Mentor> getMentors(Skill s) {
+
+        String sql = "select * from EnrollSkill\n"
+                + "where skillID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, s.getSkillId());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Mentor m = new Mentor();
+                m.setMentorID(rs.getInt(2));
+                s.getMentors().add(m);
+            }
+        } catch (Exception e) {
+            status = "Error load enroll skill: " + e.getMessage();
+        }
+        return s.getMentors();
     }
 
 //load rating
@@ -682,13 +728,11 @@ public class DAO extends DBContext {
 //        for (Skill skill : s) {
 //            System.out.println(skill.getSkillName());
 //        }
-        Comment c = new Comment();
-        c.setMentee(mt);
-        c.setMentor(m);
-        java.util.Date utilDate = new java.util.Date();
-        c.setTime(new Date(utilDate.getTime()));
-        c.setCmtContent("test 6/10");
-        d.insertComment(c);
+
+        ArrayList<Comment> c = d.getComments(m);
+        for (Comment comment : c) {
+            System.out.println(comment.getMentee().getUser());
+        }
 
     }
 }

@@ -95,24 +95,12 @@
                         <div class="right_bar">
                             <div class="firstSubCategory active">
                                 <div class="row">
-                                    <div class="col-md-4 item_subcategory">
-                                        <a class="subCategory" href="#">Java</a>
-                                    </div>
-                                    <div class="col-md-4 item_subcategory">
-                                        <a class="subCategory" href="">Javascript</a>
-                                    </div>
-                                    <div class="col-md-4 item_subcategory">
-                                        <a class="subCategory" href="">C#</a>
-                                    </div>
-                                    <div class="col-md-4 item_subcategory">
-                                        <a class="subCategory" href="">Kotlin</a>
-                                    </div>
-                                    <div class="col-md-4 item_subcategory">
-                                        <a class="subCategory" href="">Python</a>
-                                    </div>
-                                    <div class="col-md-4 item_subcategory">
-                                        <a class="subCategory" href="">SQL</a>
-                                    </div>
+                                    <c:forEach var="s" items="${as}">
+                                        <div class="col-md-4 item_subcategory">
+                                            <a class="subCategory" href="#">${s.skillName}</a>
+                                        </div>
+                                    </c:forEach>
+                                    
                                 </div>
                             </div>
 

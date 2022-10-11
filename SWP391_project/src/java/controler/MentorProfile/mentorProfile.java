@@ -55,7 +55,10 @@ public class mentorProfile extends HttpServlet {
         Mentee mentee = d.getMentee(U);
         //get invitation of mentee and mentor
         Invitation invitation = d.getInvitation(m, mentee);
+        //get all skills
+        ArrayList<Skill> allSkills = d.getSkill();
 
+        request.setAttribute("as", allSkills);
 
         request.setAttribute("i", invitation);
         request.setAttribute("c", comments);
@@ -73,12 +76,15 @@ public class mentorProfile extends HttpServlet {
         String comment = request.getParameter("comment");
         //get current user
         User U = (User) request.getSession().getAttribute("user");
+        
         //get mentorID in URL
         String mentorID = request.getParameter("hiddenMentorID");
         Mentor m = new Mentor();
         m.setMentorID(Integer.parseInt(mentorID));
+        
         //get mentee of current user
         Mentee mentee = d.getMentee(U);
+        
         //create new comment
         Comment c = new Comment();
         c.setCmtContent(comment);
@@ -86,15 +92,20 @@ public class mentorProfile extends HttpServlet {
         c.setMentor(m);
         java.util.Date utilDate = new java.util.Date();
         c.setTime(new Date(utilDate.getTime()));
+        
         //insert comment to db
         d.insertComment(c);
+        
         //create new rate
         Rating r = new Rating();
         r.setMentee(mentee);
         r.setMentor(m);
         r.setRateStar(rate);
         d.insertRate(r);
-        response.getWriter().print(rate + " " + comment + " " + mentorID);
+        
+        //URL reload
+        String url = "mentorprofile?mentorID=" + mentorID;
+        response.sendRedirect(url);
 
     }
 

@@ -11,7 +11,7 @@ public class Skill {
     private int skillId;
     private String skillName;
     private String skillDescription;
-    private ArrayList<Mentor> mentors;
+    private ArrayList<Mentor> mentors = new ArrayList<>();
 
     public Skill() {
     }
