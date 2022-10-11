@@ -31,7 +31,6 @@
                     placeholder="Enter password" required /><br><br /><br>
 
                 <!-- thong bao loi gui tu servlet ve -->
-                <!-- <p class="login_valid">The email or password is incorrect</p> -->
 
                 <button class="btn-submit">Login</button><br /><br>
                 <div class="action_loginform">

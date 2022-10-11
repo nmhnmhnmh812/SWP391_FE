@@ -1,5 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -26,195 +27,51 @@
 
         <div class="container wrap-outstanding-mentor">
             <div class="part"  data-aos="fade-up" data-aos-duration="1000">
-                <h4>Java Mentors</h4>
+                <h4 style="text-transform: capitalize;">${requestScope.tech} Mentors</h4>
                 <div class="line_part"></div>
             </div>
 
             <div class="list-mentors">
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 col-xs-12 card-mentor">
-                        <div class="items-card-mentor">
+                    <c:forEach items="${requestScope.listMentor}" var="m">
 
-                            <div class="card-upper-part">
-                                <img class="rounded-circle" src="image/avtuser.png" alt="avatar">
-                                <h4>Name</h4>
-                                <p>Java Mentor</p>
-                                <span class="rating"><i id="star-icon" class="fa-solid fa-star"></i><span>4/5</span></span>
-                            </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12 card-mentor">
+                            <div class="items-card-mentor">
 
-                            <div class="card-lower-part">
-                                <div class="card-technologies-knowledge">
-                                    Java
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Javascript
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    C#
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Python
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Reactjs
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Nodejs
-                                </div>
-                            </div>
+                                <c:forEach items="${requestScope.listUser}" var="u">
+                                    <c:if test="${m.getUserId() == u.getUserId()}">
+                                        <div class="card-upper-part">
+                                            <img class="rounded-circle" src="img_upload/${u.getAvatar()}" alt="avatar">
+                                            <h4>${u.getFullname()}</h4>
+                                            <c:forEach var="r" items="${requestScope.rateMap}">
+                                                <c:if test="${r.key == m.getMentorId()}">
+                                                    <span class="rating"><i id="star-icon" class="fa-solid fa-star"></i><span style="color:black;">${r.value}/5.0</span></span>
+                                                        </c:if>
+                                                    </c:forEach>
 
-                            <div class="openCV">
-                                <button id="btn-openCV"><a href="#">Open CV</a></button>
-                            </div>
-                        </div>
-                    </div>
+                                        </div>
+                                    </c:if>
+                                </c:forEach>
 
-                    <div class="col-md-3 col-sm-6 col-xs-12 card-mentor">
-                        <div class="items-card-mentor">
+                                <div class="card-lower-part">
+                                    <c:forEach items="${requestScope.listSkill}" var="s">
+                                        <c:forEach items="${requestScope.listEnrollSkill}" var="es">
+                                            <c:if test="${m.getMentorId() == es.getMentorId() && es.getSkillId() == s.getSkillId()}">
 
-                            <div class="card-upper-part">
-                                <img class="rounded-circle" src="image/avtuser.png" alt="avatar">
-                                <h4>Name</h4>
-                                <p>Java Mentor</p>
-                                <span class="rating"><i id="star-icon" class="fa-solid fa-star"></i><span>4/5</span></span>
-                            </div>
+                                                <div class="card-technologies-knowledge">${s.getSkillName()}</div>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:forEach>
+                                </div>
 
-                            <div class="card-lower-part">
-                                <div class="card-technologies-knowledge">
-                                    Java
+                                <div class="openCV">
+                                    <button id="btn-openCV"><a href="#">Open CV</a></button>
                                 </div>
-                                <div class="card-technologies-knowledge">
-                                    Javascript
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    C#
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Python
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Reactjs
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Nodejs
-                                </div>
-                            </div>
-
-                            <div class="openCV">
-                                <button id="btn-openCV"><a href="#">Open CV</a></button>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-3 col-sm-6 col-xs-12 card-mentor">
-                        <div class="items-card-mentor">
-
-                            <div class="card-upper-part">
-                                <img class="rounded-circle" src="image/avtuser.png" alt="avatar">
-                                <h4>Name</h4>
-                                <p>Java Mentor</p>
-                                <span class="rating"><i id="star-icon" class="fa-solid fa-star"></i><span>4/5</span></span>
-                            </div>
-
-                            <div class="card-lower-part">
-                                <div class="card-technologies-knowledge">
-                                    Java
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Javascript
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    C#
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Python
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Reactjs
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Nodejs
-                                </div>
-                            </div>
-                            <div class="openCV">
-                                <button id="btn-openCV"><a href="#">Open CV</a></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 col-xs-12 card-mentor">
-                        <div class="items-card-mentor">
-
-                            <div class="card-upper-part">
-                                <img class="rounded-circle" src="image/avtuser.png" alt="avatar">
-                                <h4>Name</h4>
-                                <p>Java Mentor</p>
-                                <span class="rating"><i id="star-icon" class="fa-solid fa-star"></i><span>4/5</span></span>
-                            </div>
-
-                            <div class="card-lower-part">
-                                <div class="card-technologies-knowledge">
-                                    Java
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Javascript
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    C#
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Python
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Reactjs
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Nodejs
-                                </div>
-                            </div>
-
-                            <div class="openCV">
-                                <button id="btn-openCV"><a href="#">Open CV</a></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 col-xs-12 card-mentor">
-                        <div class="items-card-mentor">
-
-                            <div class="card-upper-part">
-                                <img class="rounded-circle" src="image/avtuser.png" alt="avatar">
-                                <h4>Name</h4>
-                                <p>Java Mentor</p>
-                                <span class="rating"><i id="star-icon" class="fa-solid fa-star"></i><span>4/5</span></span>
-                            </div>
-
-                            <div class="card-lower-part">
-                                <div class="card-technologies-knowledge">
-                                    Java
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Javascript
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    C#
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Python
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Reactjs
-                                </div>
-                                <div class="card-technologies-knowledge">
-                                    Nodejs
-                                </div>
-                            </div>
-
-                            <div class="openCV">
-                                <button id="btn-openCV"><a href="#">Open CV</a></button>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
+                    
                 </div>
             </div>
 
