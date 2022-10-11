@@ -168,10 +168,13 @@
                             <div class="items-rate-comment" data-aos="fade-left" data-aos-duration="1000">
                                 <p class="cv-comment"> ${comment.mentee.user.fullname}</p>
                                 <span class="rating"><i class="fa-solid fa-star"></i><span class="rating-number">${rate.rateStar}</span></span>
-                                <p class="cv-comment">${comment.time}</p>
+                                        <c:forEach var="fd" items="${requestScope.fd}">
+                                            <c:if test="${fd.key == comment.commentID}">
+                                        <p class="cv-comment">${fd.value}</p>  
+                                    </c:if>
+                                </c:forEach>
                                 <p class="cv-comment">${comment.cmtContent}</p>                  
                             </div>
-
                         </c:if>
                     </c:forEach>
                 </c:forEach>

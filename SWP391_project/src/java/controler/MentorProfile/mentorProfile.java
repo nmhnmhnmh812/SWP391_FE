@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import model.Comment;
 import model.Invitation;
 import model.Mentee;
@@ -38,28 +39,40 @@ public class mentorProfile extends HttpServlet {
         User U = (User) request.getSession().getAttribute("user");
         //get mentorID in URL
         String mentorID = request.getParameter("mentorID");
+        
         //create mentor
         Mentor m = new Mentor();
         m.setMentorID(Integer.parseInt(mentorID));
+        
         //get list skill of mentor
         ArrayList<Skill> skills = d.getSkills(m);
+        
         //get profile of mentor
         Profile profile = d.getProfile(m);
+        
         //get user info of mentor
         User user = d.getUser(m);
+        
         //get comment of mentor
         ArrayList<Comment> comments = d.getComments(m);
+        
         //get rates of mentor
         ArrayList<Rating> rates = d.getRates(m);
+        
         //get mentee of current user
         Mentee mentee = d.getMentee(U);
+        
         //get invitation of mentee and mentor
         Invitation invitation = d.getInvitation(m, mentee);
+        
         //get all skills
         ArrayList<Skill> allSkills = d.getSkill();
+        
+        //get formatted date of comments belong a mentor
+        HashMap<Integer,String> formattedDates = d.formattedDate(m);
 
+        request.setAttribute("fd", formattedDates);
         request.setAttribute("as", allSkills);
-
         request.setAttribute("i", invitation);
         request.setAttribute("c", comments);
         request.setAttribute("r", rates);
@@ -102,6 +115,8 @@ public class mentorProfile extends HttpServlet {
         r.setMentor(m);
         r.setRateStar(rate);
         d.insertRate(r);
+        
+        
         
         //URL reload
         String url = "mentorprofile?mentorID=" + mentorID;

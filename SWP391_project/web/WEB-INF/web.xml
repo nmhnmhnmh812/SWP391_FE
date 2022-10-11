@@ -22,7 +22,7 @@
     </servlet>
     <servlet>
         <servlet-name>home</servlet-name>
-        <servlet-class>controler.home</servlet-class>
+        <servlet-class>controler.Home.home</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>login</servlet-name>
@@ -34,7 +34,7 @@
     </servlet>
     <servlet>
         <servlet-name>mentorProfile</servlet-name>
-        <servlet-class>controler.mentorProfile</servlet-class>
+        <servlet-class>controler.MentorProfile.mentorProfile</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>changePassword</servlet-name>

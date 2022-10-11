@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -92,17 +94,16 @@ public class DAO extends DBContext {
                 + "           ,[cmtContent]\n"
                 + "           ,[time])\n"
                 + "     VALUES\n"
-                + "           (?,\n"
-                + "           ?,\n"
-                + "           ?,\n"
-                + "           ?)";
+                + "           (?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,GETDATE())";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setInt(1, c.getMentor().getMentorID());
             ps.setInt(2, c.getMentee().getMenteeID());
             ps.setString(3, c.getCmtContent());
-            ps.setDate(4, c.getTime());
             ps.execute();
         } catch (Exception e) {
             status = "Error at update user profile" + e.getMessage();
@@ -152,20 +153,20 @@ public class DAO extends DBContext {
     }
 
     // Change password
-    public void changePassword(int userId, String newPass){
+    public void changePassword(int userId, String newPass) {
         String sql = "update [User] set password = ? where userID = ?";
-        try{
+        try {
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             ps.setString(1, newPass);
             ps.setInt(2, userId);
             ps.execute();
-            
-        } catch(Exception e){
+
+        } catch (Exception e) {
             status = "Error at change password: " + e.getMessage();
         }
     }
-    
+
     //register
     public void register(String username, String password, String email, Date dob, String fullname, String address, boolean gender, String avata, String phonenmuner) {
         String sql = "INSERT INTO [dbo].[User]([username],[password],[email],[dob],[fullname],[address],[gender],[role],[status],[avatar],[phonenumber])\n"
@@ -453,6 +454,26 @@ public class DAO extends DBContext {
         return comments;
     }
 
+    //get hash map with mentorID-key formatted time-value
+    public HashMap<Integer, String> formattedDate(Mentor m) {
+        HashMap<Integer, String> dates = new HashMap<>();
+        int mentorID = m.getMentorID();
+        String sql = "select c.commentID,format(c.time,'dd-MM-yyyy HH:ss') as 'date' \n"
+                + "from Comment c\n"
+                + "where c.mentorID = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, mentorID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                dates.put(rs.getInt(1), rs.getString(2));
+            }
+        } catch (Exception e) {
+            status = e.getMessage();
+        }
+        return dates;
+    }
+
     //get mentee by user
     public Mentee getMentee(User u) {
         int userID = (u != null) ? u.getUserId() : -1;
@@ -728,11 +749,24 @@ public class DAO extends DBContext {
 //        for (Skill skill : s) {
 //            System.out.println(skill.getSkillName());
 //        }
-
-        ArrayList<Comment> c = d.getComments(m);
-        for (Comment comment : c) {
-            System.out.println(comment.getMentee().getUser());
+        HashMap<Integer, String> dates = d.formattedDate(m);
+        Comment c = new Comment();
+        c.setCommentID(1);
+        System.out.println(dates.get(c.getCommentID()));
+                //get comment of mentor
+        ArrayList<Comment> comments = d.getComments(m);
+        
+        //get rates of mentor
+        ArrayList<Rating> rates = d.getRates(m);
+        
+        for (Rating rate : rates) {
+            System.out.println(rate.getRateStar());
         }
+        
+        for (Comment c1: comments) {
+            System.out.println(c1);
+        }
+        System.out.println(comments.isEmpty());
 
     }
 }
