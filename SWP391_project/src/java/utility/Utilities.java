@@ -7,6 +7,7 @@ package utility;
 import dal.DAO;
 import java.util.ArrayList;
 import model.*;
+import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 
 /**
  *
@@ -54,12 +55,14 @@ public class Utilities {
     }
 
     public User getExistedUser(String username, String password) {
+        User user = null;
         for (User u : listUser) {
             if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
-                return u;
+                user = u;
+                break;
             }
         }
-        return null;
+        return user;
 
     }
 
@@ -119,12 +122,8 @@ public class Utilities {
 //    public ArrayList<String> 
     //main to test function working or not
     public static void main(String[] args) {
-//        Utilities uti = new Utilities();
-//        int totalRate = 0;
-//        for (Rating r : uti.getRatingStar("c")) {
-//////            totalRate += r.getRateStar();
-//            System.out.println(r.toString());
-//        }
-////        System.out.println(totalRate);
+        Utilities uti = new Utilities();
+        User u = uti.getExistedUser("mra", "1");
+        System.out.println(u.getFullname());
     }
 }

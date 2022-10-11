@@ -1,6 +1,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,8 +22,8 @@
     <body>
 
         <!--header-->
-        <%@include file="./header.jsp" %>
-        
+        <c:import url="./header.jsp"/>
+
         <div class="container mb-5 contain_mentor_infor">
             <div class="part mt-5 mb-5">
                 <h4 class="part-title">Mentor's profile</h4>
@@ -165,14 +166,16 @@
                     <c:forEach var="comment" items="${requestScope.c}">
                         <c:if test="${rate.mentor.mentorID == comment.mentor.mentorID && rate.mentee.menteeID == comment.mentee.menteeID}">
                             <div class="items-rate-comment" data-aos="fade-left" data-aos-duration="1000">
+                                <p class="cv-comment"> ${comment.mentee.user.fullname}</p>
                                 <span class="rating"><i class="fa-solid fa-star"></i><span class="rating-number">${rate.rateStar}</span></span>
-                                <p class="cv-comment">${comment.cmtContent}</p>
+                                <p class="cv-comment">${comment.time}</p>
+                                <p class="cv-comment">${comment.cmtContent}</p>                  
                             </div>
-                        </div>
-                    </c:if>
-                </c:forEach>
-            </c:forEach>
 
+                        </c:if>
+                    </c:forEach>
+                </c:forEach>
+            </div>
 
         </div>
     </div>

@@ -386,7 +386,7 @@
     border: none;
     border-radius: 10px;
     color: #fff;
-    outline: 1px solid #3330E4;
+    outline: none;
 }
 
 #btn_seemore:hover {

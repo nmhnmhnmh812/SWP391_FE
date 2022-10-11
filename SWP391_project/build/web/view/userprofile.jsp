@@ -23,7 +23,8 @@
 
     <body>
 
-        <%@include file="./header.jsp" %>
+        <!--header-->
+        <c:import url="./header.jsp"/>
 
         <div class="container wrap-profile">
             <div class="row">

@@ -1,5 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +20,8 @@
     </head>
     <body>
         <!--header-->
-        <%@include file="./header.jsp" %>
+
+        <c:import url="./header.jsp"/>
 
         <!--body-->
         <div class="container-fluid banner">
@@ -78,93 +80,15 @@
 
             <div class="items_technologies">
                 <div class="row" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
-                        <div class="item_techonology">
-                            <h3><a href="#" class="item_name">Java</a></h3>
-                            <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
-                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
-                        <div class="item_techonology">
-                            <h3><a href="#" class="item_name">Javascript</a></h3>
-                            <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
-                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
-                        <div class="item_techonology">
-                            <h3><a href="#" class="item_name">C#</a></h3>
-                            <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
-                            <p class="item_technology_description">C# is a general-purpose, multi-paradigm programming language. C# encompasses static typing, strong typing, lexically scoped, imperative, declarative, functional, generic, object-oriented, and component-oriented programming disciplines</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
-                        <div class="item_techonology">
-                            <h3><a href="#" class="item_name">Python</a></h3>
-                            <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
-                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
-                        <div class="item_techonology">
-                            <h3><a href="#" class="item_name">Java</a></h3>
-                            <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
-                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
-                        <div class="item_techonology">
-                            <h3><a href="#" class="item_name">Javascript</a></h3>
-                            <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
-                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
-                        <div class="item_techonology">
-                            <h3><a href="#" class="item_name">C#</a></h3>
-                            <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
-                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
-                        <div class="item_techonology">
-                            <h3><a href="#" class="item_name">Python</a></h3>
-                            <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
-                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
-                        <div class="item_techonology">
-                            <h3><a href="#" class="item_name">Java</a></h3>
-                            <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
-                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
-                        <div class="item_techonology">
-                            <h3><a href="#" class="item_name">Javascript</a></h3>
-                            <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
-                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
-                        <div class="item_techonology">
-                            <h3><a href="#" class="item_name">C#</a></h3>
-                            <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
-                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
-                        <div class="item_techonology">
-                            <h3><a href="#" class="item_name">Python</a></h3>
-                            <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>
-                            <p class="item_technology_description">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible</p>
-                        </div>
-                    </div>
-
+                    <c:forEach var="skills" items="${requestScope.as}">
+                        <div class="col-md-3 col-sm-6 col-xs-12 item_contain">
+                            <div class="item_techonology">
+                                <h3><a href="#" class="item_name">${skills.skillName}</a></h3>
+                                <!--                                <span class="rating"><i class="fa-solid fa-star"></i><span>4/5 average rating</span></span>-->
+                                <p class="item_technology_description">${skills.skillDescription}</p>
+                            </div>
+                        </div>                        
+                    </c:forEach>    
                 </div>
             </div>
 
