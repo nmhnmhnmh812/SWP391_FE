@@ -6,43 +6,39 @@
     </welcome-file-list>
     <servlet>
         <servlet-name>update_userprofile</servlet-name>
-        <servlet-class>controler.UserProfile.update_userprofile</servlet-class>
+        <servlet-class>controler.update_userprofile</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>userprofile</servlet-name>
-        <servlet-class>controler.UserProfile.userprofile</servlet-class>
+        <servlet-class>controler.userprofile</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>register</servlet-name>
-        <servlet-class>controler.Register.register</servlet-class>
+        <servlet-class>controler.register</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>verify</servlet-name>
-        <servlet-class>controler.Register.verify</servlet-class>
+        <servlet-class>controler.verify</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>home</servlet-name>
-        <servlet-class>controler.Home.home</servlet-class>
+        <servlet-class>controler.home</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>login</servlet-name>
-        <servlet-class>controler.Login.login</servlet-class>
+        <servlet-class>controler.login</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>logOut</servlet-name>
-        <servlet-class>controler.LogOut.logOut</servlet-class>
+        <servlet-class>controler.logOut</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>mentorProfile</servlet-name>
-        <servlet-class>controler.MentorProfile.mentorProfile</servlet-class>
+        <servlet-class>controler.mentorProfile</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>search</servlet-name>
-        <servlet-class>controler.Search.search</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>commentMentor</servlet-name>
-        <servlet-class>controler.MentorProfile.commentMentor</servlet-class>
+        <servlet-name>changePassword</servlet-name>
+        <servlet-class>controler.ChangePassword.changePassword</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>update_userprofile</servlet-name>
@@ -77,12 +73,8 @@
         <url-pattern>/mentorprofile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>search</servlet-name>
-        <url-pattern>/search</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>commentMentor</servlet-name>
-        <url-pattern>/commentMentor</url-pattern>
+        <servlet-name>changePassword</servlet-name>
+        <url-pattern>/change-password</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

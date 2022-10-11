@@ -150,6 +150,21 @@ public class DAO extends DBContext {
         }
     }
 
+    // Change password
+    public void changePassword(int userId, String newPass){
+        String sql = "update [User] set password = ? where userID = ?";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setString(1, newPass);
+            ps.setInt(2, userId);
+            ps.execute();
+            
+        } catch(Exception e){
+            status = "Error at change password: " + e.getMessage();
+        }
+    }
+    
     //register
     public void register(String username, String password, String email, Date dob, String fullname, String address, boolean gender, String avata, String phonenmuner) {
         String sql = "INSERT INTO [dbo].[User]([username],[password],[email],[dob],[fullname],[address],[gender],[role],[status],[avatar],[phonenumber])\n"
