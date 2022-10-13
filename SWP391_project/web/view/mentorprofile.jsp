@@ -22,7 +22,11 @@
     <body>
 
         <!--header-->
+<<<<<<< HEAD
         <c:import url="./header.jsp"/>
+=======
+        <%@include file="./header.jsp" %>
+>>>>>>> main
 
         <div class="container mb-5 contain_mentor_infor">
             <div class="part mt-5 mb-5">
@@ -179,6 +183,10 @@
                     </c:forEach>
                 </c:forEach>
             </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 
         </div>
     </div>

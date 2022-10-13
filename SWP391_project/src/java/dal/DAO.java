@@ -204,31 +204,34 @@ public class DAO extends DBContext {
         }
     }
 
-//    public ArrayList<Mentor> getMentorWithTech(String tech) {
-//        ArrayList<Mentor> listMentor = new ArrayList<Mentor>();
-//
-//        String sql = "select m.mentorID, m.userID from Mentor m,\n"
-//                + "(select s.skillID,s.skillName,es.mentorID from Skill s, EnrollSkill es\n"
-//                + "where s.skillID = es.skillID and s.skillName = ? ) a\n"
-//                + "where m.mentorID = a.mentorID";
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setString(1, tech);
-//
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//                int mentorID = rs.getInt(1);
-//                int userID = rs.getInt(2);
-//
-//                Mentor m = new Mentor(userID, mentorID);
-//                listMentor.add(m);
-//            }
-//        } catch (Exception e) {
-//            status = "Error load menter with technology: " + e.getMessage();
-//        }
-//
-//        return listMentor;
-//    }
+    public ArrayList<Mentor> getMentorWithTech(String tech) {
+        ArrayList<Mentor> listMentor = new ArrayList<Mentor>();
+
+        String sql = "select m.mentorID, m.userID from Mentor m,\n"
+                + "(select s.skillID,s.skillName,es.mentorID from Skill s, EnrollSkill es\n"
+                + "where s.skillID = es.skillID and s.skillName = ? ) a\n"
+                + "where m.mentorID = a.mentorID";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tech);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                User user = new User();
+                
+                int mentorID = rs.getInt(1);
+                user.setUserId(rs.getInt(2));
+
+                Mentor m = new Mentor(mentorID, user);
+                listMentor.add(m);
+            }
+        } catch (Exception e) {
+            status = "Error load mentor with technology: " + e.getMessage();
+        }
+
+        return listMentor;
+    }
+    
     public ArrayList<String> getTechOfMentor(int userId) {
         ArrayList<String> listTech = new ArrayList<>();
 
@@ -275,26 +278,30 @@ public class DAO extends DBContext {
     }
 
     //load enrollskill
-//    public ArrayList<EnrollSkill> getEnrollSkills() {
-//        ArrayList<EnrollSkill> listEnrollSkill = new ArrayList<>();
-//        String sql = "select * from [EnrollSkill]";
-//
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//                int enrollId = rs.getInt(1);
-//                int mentorId = rs.getInt(2);
-//                int skillId = rs.getInt(3);
-//
-//                listEnrollSkill.add(new EnrollSkill(enrollId, mentorId, skillId));
-//            }
-//        } catch (Exception e) {
-//            status = "Error load enroll skill: " + e.getMessage();
-//        }
-//
-//        return listEnrollSkill;
-//    }
+    public ArrayList<EnrollSkill> getEnrollSkills() {
+        ArrayList<EnrollSkill> listEnrollSkill = new ArrayList<>();
+        String sql = "select * from [EnrollSkill]";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Mentor m = new Mentor();
+                Skill s = new Skill();
+                int enrollId = rs.getInt(1);
+                m.setMentorID(rs.getInt(2));
+                s.setSkillId(rs.getInt(3));
+
+                listEnrollSkill.add(new EnrollSkill(enrollId, m, s));
+            }
+        } catch (Exception e) {
+            status = "Error load enroll skill: " + e.getMessage();
+        }
+
+        return listEnrollSkill;
+    }
+    
+    //get rating by mentorId
     public HashMap<Integer, Float> getRateByMentorID() {
         HashMap<Integer, Float> ratesHashMap = new HashMap<>();
         String sql = "select r.mentorID,cast((sum(rateStar)) as float) / cast((count(rateStar)) as float) as 'averageStar' \n"
@@ -337,7 +344,7 @@ public class DAO extends DBContext {
                 skills.add(s);
             }
         } catch (Exception e) {
-            status = "Error load enroll skill: " + e.getMessage();
+            status = "Error load skill: " + e.getMessage();
         }
 
         return skills;
