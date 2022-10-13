@@ -36,23 +36,32 @@ public class mentorProfile extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         User U = (User) request.getSession().getAttribute("user");
+        
         //get mentorID in URL
         String mentorID = request.getParameter("mentorID");
+        
         //create mentor
         Mentor m = new Mentor();
         m.setMentorID(Integer.parseInt(mentorID));
+        
         //get list skill of mentor
         ArrayList<Skill> skills = d.getSkills(m);
+        
         //get profile of mentor
         Profile profile = d.getProfile(m);
+        
         //get user info of mentor
         User user = d.getUser(m);
+        
         //get comment of mentor
         ArrayList<Comment> comments = d.getComments(m);
+        
         //get rates of mentor
         ArrayList<Rating> rates = d.getRates(m);
+        
         //get mentee of current user
         Mentee mentee = d.getMentee(U);
+        
         //get invitation of mentee and mentor
         Invitation invitation = d.getInvitation(m, mentee);
 
@@ -71,14 +80,18 @@ public class mentorProfile extends HttpServlet {
             throws ServletException, IOException {
         int rate = Integer.parseInt(request.getParameter("rate"));
         String comment = request.getParameter("comment");
+        
         //get current user
         User U = (User) request.getSession().getAttribute("user");
+        
         //get mentorID in URL
         String mentorID = request.getParameter("hiddenMentorID");
         Mentor m = new Mentor();
         m.setMentorID(Integer.parseInt(mentorID));
+        
         //get mentee of current user
         Mentee mentee = d.getMentee(U);
+        
         //create new comment
         Comment c = new Comment();
         c.setCmtContent(comment);
@@ -86,8 +99,10 @@ public class mentorProfile extends HttpServlet {
         c.setMentor(m);
         java.util.Date utilDate = new java.util.Date();
         c.setTime(new Date(utilDate.getTime()));
+        
         //insert comment to db
         d.insertComment(c);
+        
         //create new rate
         Rating r = new Rating();
         r.setMentee(mentee);

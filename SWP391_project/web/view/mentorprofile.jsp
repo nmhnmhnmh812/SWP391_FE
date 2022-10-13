@@ -22,7 +22,7 @@
 
         <!--header-->
         <%@include file="./header.jsp" %>
-        
+
         <div class="container mb-5 contain_mentor_infor">
             <div class="part mt-5 mb-5">
                 <h4 class="part-title">Mentor's profile</h4>
@@ -168,10 +168,10 @@
                                 <span class="rating"><i class="fa-solid fa-star"></i><span class="rating-number">${rate.rateStar}</span></span>
                                 <p class="cv-comment">${comment.cmtContent}</p>
                             </div>
-                        </div>
-                    </c:if>
+                        </c:if>
+                    </c:forEach>
                 </c:forEach>
-            </c:forEach>
+            </div>
 
 
         </div>

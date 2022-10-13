@@ -25,7 +25,7 @@ public class userprofile extends HttpServlet {
 
         User user = (User) ses.getAttribute("user");
         
-        if (uti.getUser(8) != null) { //tim duoc doi tuong va load thong tin
+        if (uti.getUser(user.getUserId()) != null) { //tim duoc doi tuong va load thong tin
             request.setAttribute("userinfor", uti.getUser(user.getUserId()));
             request.getRequestDispatcher("view/userprofile.jsp").forward(request, response);
         } 
